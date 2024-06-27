@@ -2,7 +2,7 @@ import React from "react";
 import { Country } from "../types/country";
 import { getCountries } from "../api/countries";
 import CountryCard from "./CountryCard";
-import './CountryList.css';
+import './CountryList.css'; // CSS 파일 임포트
 
 const CountryList: React.FC = () => {
   const [countries, setCountries] = React.useState<Country[]>([]);
@@ -20,17 +20,16 @@ const CountryList: React.FC = () => {
     fetchCountries();
   }, []);
 
-  const handleSelectCountry = (country: Country): void => {
-    if (selectedCountries.find(c => c.name.common === country.name.common)) {
-
+  const handleSelectCountry = (selectedCountry: Country): void => {
+    if (selectedCountries.find(c => c.name.common === selectedCountry.name.common)) {
       setSelectedCountries(prevSelected =>
-        prevSelected.filter(c => c.name.common !== country.name.common)
+        prevSelected.filter(c => c.name.common !== selectedCountry.name.common)
       );
-      setCountries(prevCountries => [...prevCountries, country]);
+      setCountries(prevCountries => [...prevCountries, selectedCountry]);
     } else {
-      setSelectedCountries(prevSelected => [...prevSelected, country]);
+      setSelectedCountries(prevSelected => [...prevSelected, selectedCountry]);
       setCountries(prevCountries =>
-        prevCountries.filter(c => c.name.common !== country.name.common)
+        prevCountries.filter(c => c.name.common !== selectedCountry.name.common)
       );
     }
   };
@@ -53,6 +52,7 @@ const CountryList: React.FC = () => {
         <h1>나라 목록</h1>
         <div>{renderCountryCards(countries)}</div>
       </div>
+      <div className="separator"></div>
       <div className="selected-country-list">
         <h1>선택된 목록</h1>
         <div>{renderCountryCards(selectedCountries)}</div>
