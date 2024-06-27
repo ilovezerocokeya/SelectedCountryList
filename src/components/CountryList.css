@@ -1,0 +1,43 @@
+.country-list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.country-list,
+.selected-country-list {
+  width: 45%;
+}
+
+.country-list h1,
+.selected-country-list h1 {
+  text-align: center;
+}
+
+.country-list > div,
+.selected-country-list > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.separator {
+  border-left: 2px dashed #ccc;
+  height: 100%;
+}
+
+.country-card {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.country-flag {
+  width: 200px;
+  height: 150px; /* 비율을 맞추기 위해 고정 높이 설정 */
+  object-fit: cover; /* 비율을 유지하며 이미지 크기 조정 */
+}
