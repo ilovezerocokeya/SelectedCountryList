@@ -21,15 +21,16 @@ const CountryList: React.FC = () => {
   }, []);
 
   const handleSelectCountry = (country: Country): void => {
-    if (selectedCountries.find(country => country.name.common === country.name.common)) {
+    if (selectedCountries.find(c => c.name.common === country.name.common)) {
+
       setSelectedCountries(prevSelected =>
-        prevSelected.filter(country => country.name.common !== country.name.common)
+        prevSelected.filter(c => c.name.common !== country.name.common)
       );
       setCountries(prevCountries => [...prevCountries, country]);
     } else {
       setSelectedCountries(prevSelected => [...prevSelected, country]);
       setCountries(prevCountries =>
-        prevCountries.filter(country => country.name.common !== country.name.common)
+        prevCountries.filter(c => c.name.common !== country.name.common)
       );
     }
   };
